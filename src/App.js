@@ -25,14 +25,7 @@ function App() {
             </IsAnon>
           }
         />
-        <Route
-          path="/reset-password"
-          element={
-            <IsPrivate>
-              <ForgotPassword />{" "}
-            </IsPrivate>
-          }
-        />
+        <Route path="/reset-password" element={<ForgotPassword />} />
       </Routes>
     </div>
   );
