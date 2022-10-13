@@ -5,13 +5,11 @@ import {
   FormLabel,
   Input,
   Stack,
-  Link,
   Button,
   Heading,
   useColorModeValue,
   Center,
 } from "@chakra-ui/react";
-import GoogleButton from "react-google-button";
 import ihLogo from "../assets/ironhack-logo.png";
 import { Image } from "@chakra-ui/react";
 import { sendPasswordReset } from "../firebaseFuntions/auth.firebase";
