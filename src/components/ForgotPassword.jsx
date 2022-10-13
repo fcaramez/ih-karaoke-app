@@ -25,7 +25,7 @@ export default function ForgotPassword() {
       bg={useColorModeValue("gray.50", "gray.800")}>
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Center>
-          <Stack align={"center"}>
+          <Stack align={"center"} spacing={4}>
             <Center>
               <Image
                 src={ihLogo}
@@ -38,6 +38,7 @@ export default function ForgotPassword() {
                 }}
                 alt="ironhack logo"></Image>
             </Center>
+
             <Heading fontSize={"4xl"}>Reset your Password</Heading>
           </Stack>
         </Center>
