@@ -5,6 +5,8 @@ import App from "./App";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import GlobalStyle from "./styles/GlobalStyles";
 import { ThemeProvider } from "styled-components";
+import { BrowserRouter as Router } from "react-router-dom";
+import { AuthProvider } from "./context/auth.context";
 
 const theme = {
   color: {},
@@ -20,11 +22,15 @@ const chakraTheme = extendTheme({ config });
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ChakraProvider theme={chakraTheme}>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <App />
-      </ThemeProvider>
-    </ChakraProvider>
+    <Router>
+      <ChakraProvider theme={chakraTheme}>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <AuthProvider>
+            <App />
+          </AuthProvider>
+        </ThemeProvider>
+      </ChakraProvider>
+    </Router>
   </React.StrictMode>
 );
