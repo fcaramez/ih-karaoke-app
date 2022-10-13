@@ -82,7 +82,7 @@ export default function Login() {
                 onClick={() => {
                   logInWithEmailAndPassword(email, password);
                 }}>
-                Sign up
+                Login
               </Button>
               <GoogleButton
                 onClick={() => signInWithGoogle()}

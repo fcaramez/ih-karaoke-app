@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import DotLoader from "react-spinners/DotLoader";
 
 function IsPrivate({ children }) {
-  const { isLoggedIn, isLoading } = useAuth(AuthProvider);
+  const { isLoggedIn, isLoading, currentUser } = useAuth(AuthProvider);
 
   const override = {
     display: "block",
@@ -25,7 +25,7 @@ function IsPrivate({ children }) {
       />
     );
 
-  if (!isLoggedIn) {
+  if (!isLoggedIn || !currentUser) {
     return <Navigate to={`/login`} />;
   } else {
     return children;
