@@ -3,9 +3,10 @@ import Signup from "./pages/Signup";
 import ForgotPassword from "./components/ForgotPassword";
 import { Routes, Route } from "react-router-dom";
 import IsAnon from "./components/IsAnon";
-/* import IsPrivate from "./components/IsPrivate"; */
+import IsPrivate from "./components/IsPrivate";
 import Landing from "./pages/Landing";
 import Navbar from "./components/Navbar";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -34,6 +35,14 @@ function App() {
             <IsAnon>
               <Signup />
             </IsAnon>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <IsPrivate>
+              <Profile />
+            </IsPrivate>
           }
         />
         <Route path="/reset-password" element={<ForgotPassword />} />

@@ -95,7 +95,7 @@ export default function Login() {
               <Button
                 onClick={() => signInWithGoogle()}
                 w={"full"}
-                bg={"blue.400"}
+                
                 variant={"outline"}
                 leftIcon={<FcGoogle />}>
                 <Center>

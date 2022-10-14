@@ -86,7 +86,6 @@ export default function Signup() {
                 </Center>
               </Stack>
               <Button
-                bg={"blue.400"}
                 color={"white"}
                 _hover={{
                   bg: "blue.500",
@@ -99,7 +98,6 @@ export default function Signup() {
               <Button
                 onClick={() => signInWithGoogle()}
                 w={"full"}
-                bg={"blue.400"}
                 variant={"outline"}
                 leftIcon={<FcGoogle />}>
                 <Center>
