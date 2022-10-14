@@ -11,13 +11,13 @@ function IsPrivate({ children }) {
     marginRight: "50vw",
     marginTop: "50vh",
     marginBottom: "50vh",
-    borderColor: "aqua",
+    borderColor: "var(--chakra-colors-blue-400)",
   };
 
   if (isLoading)
     return (
       <DotLoader
-        color={"aqua"}
+        color={"var(--chakra-colors-blue-400)"}
         cssOverride={override}
         size={150}
         aria-label="Loading Spinner"

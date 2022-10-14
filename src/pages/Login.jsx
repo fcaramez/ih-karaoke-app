@@ -19,10 +19,13 @@ import {
   signInWithGoogle,
 } from "../firebaseFuntions/auth.firebase";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
   return (
     <Flex
       minH={"100vh"}
@@ -70,7 +73,11 @@ export default function Login() {
                 align={"start"}
                 justify={"space-between"}>
                 <Center>
-                  <Link color={"blue.400"}>Forgot password?</Link>
+                  <Link
+                    color={"blue.400"}
+                    onClick={() => navigate("/reset-password")}>
+                    Forgot password?
+                  </Link>
                 </Center>
               </Stack>
               <Button

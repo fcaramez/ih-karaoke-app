@@ -19,10 +19,15 @@ import {
   signInWithGoogle,
 } from "../firebaseFuntions/auth.firebase";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 export default function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
+
   return (
     <Flex
       minH={"100vh"}
@@ -74,7 +79,9 @@ export default function Signup() {
                 align={"start"}
                 justify={"space-between"}>
                 <Center>
-                  <Link color={"blue.400"}>Already have an account?</Link>
+                  <Link color={"blue.400"} onClick={() => navigate("/login")}>
+                    Already have an account?
+                  </Link>
                 </Center>
               </Stack>
               <Button

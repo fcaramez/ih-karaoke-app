@@ -4,11 +4,21 @@ import ForgotPassword from "./components/ForgotPassword";
 import { Routes, Route } from "react-router-dom";
 import IsAnon from "./components/IsAnon";
 import IsPrivate from "./components/IsPrivate";
-
+import { logout } from "./firebaseFuntions/auth.firebase";
+import Landing from "./pages/Landing";
 function App() {
   return (
     <div className="App">
+      {/* <button onClick={() => logout()}>Logout</button> */}
       <Routes>
+        <Route
+          path="/"
+          element={
+            <IsAnon>
+              <Landing />
+            </IsAnon>
+          }
+        />
         <Route
           path="/login"
           element={
@@ -18,7 +28,7 @@ function App() {
           }
         />
         <Route
-          path="/signup"
+          path="/register"
           element={
             <IsAnon>
               <Signup />
