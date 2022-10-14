@@ -25,10 +25,10 @@ function IsAnon({ children }) {
       />
     );
 
-  if (!isLoggedIn || !currentUser) {
+  if (currentUser === null) {
     return children;
   } else {
-    return <Navigate to={`/`} />;
+    return <Navigate to={`/feed`} />;
   }
 }
 

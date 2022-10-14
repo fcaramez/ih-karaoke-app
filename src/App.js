@@ -6,17 +6,19 @@ import IsAnon from "./components/IsAnon";
 import IsPrivate from "./components/IsPrivate";
 import { logout } from "./firebaseFuntions/auth.firebase";
 import Landing from "./pages/Landing";
+import Navbar from "./components/Navbar";
 function App() {
   return (
     <div className="App">
-      {/* <button onClick={() => logout()}>Logout</button> */}
+      <button onClick={() => logout()}>Logout</button>
+      <Navbar />
       <Routes>
         <Route
           path="/"
           element={
-            <IsAnon>
+            <IsPrivate>
               <Landing />
-            </IsAnon>
+            </IsPrivate>
           }
         />
         <Route
