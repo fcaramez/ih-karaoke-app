@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import DotLoader from "react-spinners/DotLoader";
 
 function IsAnon({ children }) {
-  const { isLoggedIn, isLoading, currentUser } = useAuth(AuthProvider);
+  const { isLoading, currentUser } = useAuth(AuthProvider);
 
   const override = {
     display: "block",
@@ -28,7 +28,7 @@ function IsAnon({ children }) {
   if (currentUser === null) {
     return children;
   } else {
-    return <Navigate to={`/feed`} />;
+    return <Navigate to={`/`} />;
   }
 }
 

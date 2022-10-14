@@ -20,8 +20,9 @@ import {
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import ihLogo from "../assets/ironhack-logo.png";
 import { useAuth, AuthProvider } from "../context/auth.context";
+import { useNavigate } from "react-router-dom";
 
-const Links = ["Dashboard", "Projects", "Team"];
+const Links = ["Dashboard", "Projects", "Team", "Logout"];
 
 const NavLink = ({ children }) => (
   <Link
@@ -39,8 +40,8 @@ const NavLink = ({ children }) => (
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { currentUser } = useAuth(AuthProvider);
-  console.log(currentUser);
+  const { currentUser, logOutUser } = useAuth(AuthProvider);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -70,14 +71,15 @@ export default function Navbar() {
               as={"nav"}
               spacing={4}
               display={{ base: "none", md: "flex" }}>
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
-              ))}
+              <Button onClick={() => navigate("/queue")}>Queue</Button>
+              <Button onClick={() => navigate("/feed")}>Feed</Button>
+              <Button onClick={() => logOutUser()}>Logout</Button>
             </HStack>
           </HStack>
           <Flex alignItems={"center"}>
             <Menu>
               <MenuButton
+                onClick={() => navigate("/profile")}
                 as={Button}
                 rounded={"full"}
                 variant={"link"}
@@ -85,12 +87,6 @@ export default function Navbar() {
                 minW={0}>
                 <Avatar size={"sm"} src={currentUser?.photoURL} />
               </MenuButton>
-              <MenuList>
-                <MenuItem>Link 1</MenuItem>
-                <MenuItem>Link 2</MenuItem>
-                <MenuDivider />
-                <MenuItem>Link 3</MenuItem>
-              </MenuList>
             </Menu>
           </Flex>
         </Flex>
@@ -98,15 +94,13 @@ export default function Navbar() {
         {isOpen ? (
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
-              ))}
+              <Button onClick={() => navigate("/queue")}>Queue</Button>
+              <Button onClick={() => navigate("/feed")}>Feed</Button>
+              <Button onClick={() => logOutUser()}>Logout</Button>
             </Stack>
           </Box>
         ) : null}
       </Box>
-
-      <Box p={4}>Main Content Here</Box>
     </>
   );
 }
