@@ -10,6 +10,7 @@ import {
   createIcon,
   Center,
   Image,
+  Avatar,
 } from "@chakra-ui/react";
 import ihLogo from "../assets/ironhack-logo.png";
 import { useNavigate } from "react-router-dom";
@@ -17,76 +18,103 @@ import { useNavigate } from "react-router-dom";
 export default function Landing() {
   const navigate = useNavigate();
   return (
-    <Center>
-      <Container maxW={"3xl"}>
-        <Stack
-          as={Box}
-          textAlign={"center"}
-          spacing={{ base: 8, md: 14 }}
-          py={{ base: 20, md: 36 }}>
-          <Heading
-            fontWeight={600}
-            fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
-            lineHeight={"110%"}>
-            Start singing with
-            <br />
-            <Text as={"span"} color={"blue.400"}>
-              Ironhackers
-            </Text>
-          </Heading>
-          <Center>
-            <Image
-              src={ihLogo}
-              style={{
-                maxWidth: "25%",
-                maxHeight: "25%",
-                display: "flex",
-                alignContent: "center",
-                justifyContent: "center",
-              }}
-              alt="ironhack logo"></Image>
-          </Center>
+    <>
+      <Center>
+        <Container maxW={"3xl"}>
           <Stack
-            direction={"column"}
-            spacing={3}
-            align={"center"}
-            alignSelf={"center"}
-            position={"relative"}>
-            <Button
-              onClick={() => navigate("/register")}
-              colorScheme={"blue"}
-              bg={"blue.400"}
-              rounded={"full"}
-              color={"white"}
-              px={6}
-              _hover={{
-                bg: "blue.500",
-              }}>
-              Get Started
-            </Button>
-            <Box>
-              <Icon
-                as={Arrow}
-                color={useColorModeValue("blue.400", "blue.400")}
-                w={71}
-                position={"absolute"}
-                right={-71}
-                top={"10px"}
-              />
-              <Text
-                fontSize={"lg"}
-                fontFamily={"Caveat"}
-                position={"absolute"}
-                right={"-125px"}
-                top={"-15px"}
-                transform={"rotate(10deg)"}>
-                Join us, It's easy!
+            as={Box}
+            textAlign={"center"}
+            spacing={{ base: 8, md: 14 }}
+            py={{ base: 20, md: 36 }}>
+            <Heading
+              fontWeight={600}
+              fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
+              lineHeight={"110%"}>
+              Start singing with
+              <br />
+              <Text as={"span"} color={"blue.400"}>
+                Ironhackers
               </Text>
-            </Box>
+            </Heading>
+            <Center>
+              <Image
+                src={ihLogo}
+                style={{
+                  maxWidth: "25%",
+                  maxHeight: "25%",
+                  display: "flex",
+                  alignContent: "center",
+                  justifyContent: "center",
+                }}
+                alt="ironhack logo"></Image>
+            </Center>
+            <Stack
+              direction={"column"}
+              spacing={1}
+              align={"center"}
+              alignSelf={"center"}
+              position={"relative"}>
+              <Button
+                onClick={() => navigate("/register")}
+                colorScheme={"blue"}
+                bg={"blue.400"}
+                rounded={"full"}
+                color={"white"}
+                px={6}
+                _hover={{
+                  bg: "blue.500",
+                }}>
+                Get Started
+              </Button>
+              <Box>
+                <Icon
+                  as={Arrow}
+                  color={useColorModeValue("blue.400", "blue.400")}
+                  w={71}
+                  position={"absolute"}
+                  right={-71}
+                  top={"10px"}
+                />
+                <Text
+                  fontSize={"lg"}
+                  fontFamily={"Caveat"}
+                  position={"absolute"}
+                  right={"-125px"}
+                  top={"-15px"}
+                  transform={"rotate(10deg)"}>
+                  Join us, It's easy!
+                </Text>
+              </Box>
+            </Stack>
           </Stack>
-        </Stack>
-      </Container>
-    </Center>
+
+          <Text
+            fontSize={{ base: "xl", md: "2xl" }}
+            textAlign={"center"}
+            maxW={"3xl"}>
+            "Trust your voice as you need to trust the process"
+          </Text>
+          <br />
+          <Box textAlign={"center"}>
+            <Avatar
+              src={
+                "https://ca.slack-edge.com/T01BAR6KJP4-U02ALK4NWMR-4dd6ed123d8e-512"
+              }
+              alt={"Diogo Capitão"}
+              mb={2}
+            />
+
+            <Text fontWeight={600}>Diogo Capitão 👨🏼‍✈️</Text>
+            <Text
+              fontSize={"sm"}
+              color={useColorModeValue("gray.400", "gray.400")}>
+              PM | Ironhack Portugal
+            </Text>
+            <br />
+          </Box>
+        </Container>
+      </Center>
+    </>
   );
 }
 

@@ -3,14 +3,10 @@ import {
   Flex,
   Avatar,
   HStack,
-  Link,
   IconButton,
   Button,
   Menu,
   MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
   useDisclosure,
   useColorModeValue,
   Stack,
@@ -21,22 +17,6 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import ihLogo from "../assets/ironhack-logo.png";
 import { useAuth, AuthProvider } from "../context/auth.context";
 import { useNavigate } from "react-router-dom";
-
-const Links = ["Dashboard", "Projects", "Team", "Logout"];
-
-const NavLink = ({ children }) => (
-  <Link
-    px={2}
-    py={1}
-    rounded={"md"}
-    _hover={{
-      textDecoration: "none",
-      bg: useColorModeValue("gray.200", "gray.700"),
-    }}
-    href={"#"}>
-    {children}
-  </Link>
-);
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -57,6 +37,7 @@ export default function Navbar() {
           <HStack spacing={8} alignItems={"center"}>
             <Center>
               <Image
+                onClick={() => navigate("/")}
                 src={ihLogo}
                 style={{
                   maxWidth: "15%",
