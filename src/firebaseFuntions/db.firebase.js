@@ -1,4 +1,4 @@
-import firebaseConfig from "../firebase.config";
+import firebaseConfig from "../config/firebase.config";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 

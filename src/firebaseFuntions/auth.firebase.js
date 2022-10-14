@@ -1,4 +1,4 @@
-import firebaseConfig from "../firebase.config";
+import firebaseConfig from "../config/firebase.config";
 import { initializeApp } from "firebase/app";
 import {
   GoogleAuthProvider,
@@ -16,6 +16,8 @@ import {
   where,
   addDoc,
 } from "firebase/firestore";
+
+
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -72,7 +74,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
 const sendPasswordReset = async (email) => {
   try {
     await sendPasswordResetEmail(auth, email);
-    alert("Password reset link sent!");
+    //alert("Password reset link sent!");
   } catch (error) {
     console.error(error);
     alert(error.message);

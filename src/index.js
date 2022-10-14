@@ -7,6 +7,8 @@ import GlobalStyle from "./styles/GlobalStyles";
 import { ThemeProvider } from "styled-components";
 import { BrowserRouter as Router } from "react-router-dom";
 import { AuthProvider } from "./context/auth.context";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastProvider } from "./context/toast.context";
 
 const theme = {
   color: {},
@@ -27,7 +29,9 @@ root.render(
         <ThemeProvider theme={theme}>
           <GlobalStyle />
           <AuthProvider>
-            <App />
+            <ToastProvider>
+              <App />
+            </ToastProvider>
           </AuthProvider>
         </ThemeProvider>
       </ChakraProvider>
