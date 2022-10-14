@@ -1,12 +1,11 @@
 import {
-  Flex,
-  Box,
+  Button,
   FormControl,
-  FormLabel,
+  Flex,
+  Heading,
   Input,
   Stack,
-  Button,
-  Heading,
+  Text,
   useColorModeValue,
   Center,
 } from "@chakra-ui/react";
@@ -17,60 +16,66 @@ import { useState } from "react";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
+
+  const handlePasswordReset = () => {
+    sendPasswordReset(email);
+    setEmail("");
+  };
+
   return (
     <Flex
       minH={"100vh"}
       align={"center"}
       justify={"center"}
       bg={useColorModeValue("gray.50", "gray.800")}>
-      <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+      <Stack
+        spacing={4}
+        w={"full"}
+        maxW={"md"}
+        bg={useColorModeValue("white", "gray.700")}
+        rounded={"xl"}
+        boxShadow={"lg"}
+        p={6}
+        my={12}>
         <Center>
-          <Stack align={"center"} spacing={4}>
-            <Center>
-              <Image
-                src={ihLogo}
-                style={{
-                  maxWidth: "25%",
-                  maxHeight: "25%",
-                  display: "flex",
-                  alignContent: "center",
-                  justifyContent: "center",
-                }}
-                alt="ironhack logo"></Image>
-            </Center>
-
-            <Heading fontSize={"4xl"}>Reset your Password</Heading>
-          </Stack>
+          <Image
+            src={ihLogo}
+            style={{
+              maxWidth: "25%",
+              maxHeight: "25%",
+              display: "flex",
+              alignContent: "center",
+              justifyContent: "center",
+            }}
+            alt="ironhack logo"></Image>
         </Center>
-        <Box
-          rounded={"lg"}
-          bg={useColorModeValue("white", "gray.700")}
-          boxShadow={"lg"}
-          p={8}>
-          <Stack spacing={4}>
-            <FormControl id="username">
-              <FormLabel>Email</FormLabel>
-              <Input type="text" onChange={(e) => setEmail(e.target.value)} />
-            </FormControl>
-            <Stack spacing={4}>
-              <Stack
-                direction={{ base: "column", sm: "row" }}
-                align={"start"}
-                justify={"space-between"}></Stack>
-              <Button
-                bg={"blue.400"}
-                color={"white"}
-                _hover={{
-                  bg: "blue.500",
-                }}
-                onClick={() => {
-                  sendPasswordReset(email);
-                }}>
-                Send Reset Email
-              </Button>
-            </Stack>
-          </Stack>
-        </Box>
+        <Heading lineHeight={1.1} fontSize={{ base: "2xl", md: "3xl" }}>
+          Forgot your password?
+        </Heading>
+        <Text
+          fontSize={{ base: "sm", sm: "md" }}
+          color={useColorModeValue("gray.800", "gray.400")}>
+          You&apos;ll get an email with a reset link
+        </Text>
+        <FormControl id="email">
+          <Input
+            placeholder="your-email@example.com"
+            _placeholder={{ color: "gray.500" }}
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </FormControl>
+        <Stack spacing={6}>
+          <Button
+            onClick={() => handlePasswordReset()}
+            bg={"blue.400"}
+            color={"white"}
+            _hover={{
+              bg: "blue.500",
+            }}>
+            Request Reset
+          </Button>
+        </Stack>
       </Stack>
     </Flex>
   );

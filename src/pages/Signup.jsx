@@ -10,8 +10,9 @@ import {
   Heading,
   useColorModeValue,
   Center,
+  Text,
 } from "@chakra-ui/react";
-import GoogleButton from "react-google-button";
+import { FcGoogle } from "react-icons/fc";
 import ihLogo from "../assets/ironhack-logo.png";
 import { Image } from "@chakra-ui/react";
 import {
@@ -95,9 +96,16 @@ export default function Signup() {
                 }}>
                 Sign up
               </Button>
-              <GoogleButton
+              <Button
                 onClick={() => signInWithGoogle()}
-                style={{ width: "100%" }}></GoogleButton>
+                w={"full"}
+                bg={"blue.400"}
+                variant={"outline"}
+                leftIcon={<FcGoogle />}>
+                <Center>
+                  <Text>Sign in with Google</Text>
+                </Center>
+              </Button>
             </Stack>
           </Stack>
         </Box>
