@@ -37,7 +37,7 @@ export default function Navbar() {
           <HStack spacing={8} alignItems={"center"}>
             <Center>
               <Image
-                onClick={() => navigate("/")}
+                onClick={() => navigate("/queue")}
                 src={ihLogo}
                 style={{
                   maxWidth: "15%",

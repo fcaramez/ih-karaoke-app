@@ -50,7 +50,7 @@ export default function Signup() {
                 }}
                 alt="ironhack logo"></Image>
             </Center>
-            <Heading fontSize={"4xl"}>Sign up for Karaoke!🎤</Heading>
+            <Heading fontSize={"3xl"}>Sign up for Karaoke!🎤</Heading>
           </Stack>
         </Center>
         <Box

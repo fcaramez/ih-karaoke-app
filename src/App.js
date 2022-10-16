@@ -7,6 +7,8 @@ import IsPrivate from "./components/IsPrivate";
 import Landing from "./pages/Landing";
 import Navbar from "./components/Navbar";
 import Profile from "./pages/Profile";
+import { Queue } from "./pages/Queue";
+import RequestForm from "./components/RequestForm";
 
 function App() {
   return (
@@ -46,6 +48,15 @@ function App() {
           }
         />
         <Route path="/reset-password" element={<ForgotPassword />} />
+        <Route path="/queue" element={<Queue />} />
+        <Route
+          path="/add-request"
+          element={
+            <IsPrivate>
+              <RequestForm />
+            </IsPrivate>
+          }
+        />
       </Routes>
     </div>
   );

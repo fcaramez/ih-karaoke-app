@@ -22,10 +22,13 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+ 
 
   return (
     <Flex
@@ -48,7 +51,7 @@ export default function Login() {
                 }}
                 alt="ironhack logo"></Image>
             </Center>
-            <Heading fontSize={"4xl"}>Login for Karaoke!🎤</Heading>
+            <Heading fontSize={"3xl"}>Login for Karaoke!🎤</Heading>
           </Stack>
         </Center>
         <Box
@@ -95,7 +98,6 @@ export default function Login() {
               <Button
                 onClick={() => signInWithGoogle()}
                 w={"full"}
-                
                 variant={"outline"}
                 leftIcon={<FcGoogle />}>
                 <Center>

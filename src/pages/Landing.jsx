@@ -28,7 +28,7 @@ export default function Landing() {
             py={{ base: 20, md: 36 }}>
             <Heading
               fontWeight={600}
-              fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
+              fontSize={{ base: "2xl", sm: "3xl", md: "6xl" }}
               lineHeight={"110%"}>
               Start singing with
               <br />

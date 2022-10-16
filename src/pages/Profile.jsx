@@ -7,11 +7,14 @@ import {
   StatNumber,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 function StatsCard(props) {
-  const { stat } = props;
+  const { stat, url } = props;
+  const navigate = useNavigate();
   return (
     <Stat
+      onClick={() => navigate(`/${url}`)}
       px={{ base: 4, md: 8 }}
       py={"5"}
       shadow={"xl"}
@@ -34,19 +37,20 @@ export default function Profile() {
     <Box maxW="7xl" mx={"auto"} pt={5} px={{ base: 2, sm: 12, md: 17 }}>
       <chakra.h1
         textAlign={"center"}
-        fontSize={"4xl"}
+        fontSize={"3xl"}
         py={10}
         fontWeight={"bold"}>
         Explore our cool features!
       </chakra.h1>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 4, lg: 8 }}>
         <StatsCard
+          url={"add-request"}
           onClick={() => console.log("Rock Karaoke")}
           stat={"Rock the Karaoke 🎤"}
         />
-        <StatsCard stat={"Check the Queue 🕚"} />
-        <StatsCard stat={"Share your experience ✨"} />
-        <StatsCard stat={"Check on other Ironhackers 🚀"} />
+        <StatsCard url={"queue"} stat={"Check the Queue 🕚"} />
+        <StatsCard stat={"Share your experience ✨ (coming soon)"} />
+        <StatsCard stat={"Check on other Ironhackers 🚀 (coming soon)"} />
       </SimpleGrid>
     </Box>
   );
