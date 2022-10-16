@@ -4,24 +4,24 @@ import {
   chakra,
   SimpleGrid,
   Stat,
-  StatLabel,
   StatNumber,
   useColorModeValue,
-  Center,
 } from "@chakra-ui/react";
 
 function StatsCard(props) {
-  const { title, stat } = props;
+  const { stat } = props;
   return (
     <Stat
-      _hover={{ boxShadow: "16px grey" }}
       px={{ base: 4, md: 8 }}
       py={"5"}
       shadow={"xl"}
       border={"1px solid"}
       borderColor={useColorModeValue("blue.800", "blue.500")}
       rounded={"lg"}
-      cursor={"pointer"}>
+      cursor={"pointer"}
+      _hover={{
+        bg: "blue.500",
+      }}>
       <StatNumber textAlign={"center"} fontSize={"2xl"} fontWeight={"medium"}>
         {stat}
       </StatNumber>
@@ -40,7 +40,10 @@ export default function Profile() {
         Explore our cool features!
       </chakra.h1>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 4, lg: 8 }}>
-        <StatsCard stat={"Rock the Karaoke 🎤"} />
+        <StatsCard
+          onClick={() => console.log("Rock Karaoke")}
+          stat={"Rock the Karaoke 🎤"}
+        />
         <StatsCard stat={"Check the Queue 🕚"} />
         <StatsCard stat={"Share your experience ✨"} />
         <StatsCard stat={"Check on other Ironhackers 🚀"} />

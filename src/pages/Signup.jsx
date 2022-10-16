@@ -86,6 +86,7 @@ export default function Signup() {
                 </Center>
               </Stack>
               <Button
+                bg={"blue.400"}
                 color={"white"}
                 _hover={{
                   bg: "blue.500",

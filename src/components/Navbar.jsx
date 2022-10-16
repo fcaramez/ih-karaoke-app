@@ -66,7 +66,9 @@ export default function Navbar() {
                 variant={"link"}
                 cursor={"pointer"}
                 minW={0}>
-                <Avatar size={"sm"} src={currentUser?.photoURL} />
+                {currentUser && (
+                  <Avatar size={"sm"} src={currentUser.photoURL} />
+                )}
               </MenuButton>
             </Menu>
           </Flex>
