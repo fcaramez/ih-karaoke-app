@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import Profile from "./pages/Profile";
 import { Queue } from "./pages/Queue";
 import RequestForm from "./components/RequestForm";
+import {Dashboard} from "./pages/Dashboard";
 
 function App() {
   return (
@@ -57,6 +58,9 @@ function App() {
             </IsPrivate>
           }
         />
+          <Route path={"/super-secret-dashboard"} element={
+                <Dashboard/>
+          }  />
       </Routes>
     </div>
   );

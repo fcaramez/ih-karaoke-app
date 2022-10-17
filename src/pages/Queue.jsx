@@ -1,7 +1,7 @@
 import React from "react";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { db } from "../firebaseFuntions/auth.firebase";
-import { collection } from "firebase/firestore";
+import { collection, orderBy } from "firebase/firestore";
 import {
   Box,
   chakra,
@@ -13,7 +13,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { FiMic } from "react-icons/fi";
-
+import { deleteRequest } from "../firebaseFuntions/db.firebase";
 function StatsCard(props) {
   const { title, stat, icon } = props;
   return (
@@ -47,7 +47,16 @@ function StatsCard(props) {
 export const Queue = () => {
   const requestsRef = collection(db, "requests");
 
-  const [requests] = useCollectionData(requestsRef);
+  const [requests] = useCollectionData(requestsRef, orderBy("createdAt"));
+  console.log(requests);
+  /*  const data = requests.map((doc) => {
+    return ({
+      ...doc.data(), id: doc.id
+    })
+  }) */
+  const handleDelete = async (songName) => {
+    await deleteRequest(songName);
+  };
 
   return (
     <div>
@@ -70,6 +79,9 @@ export const Queue = () => {
                       stat={el.songName}
                       icon={<FiMic size={"3em"} />}
                     />
+                    <button onClick={() => handleDelete(el.performers)}>
+                      Delete Request
+                    </button>
                   </div>
                 );
               })
