@@ -4,14 +4,11 @@ import {
   chakra,
   SimpleGrid,
   Stat,
-  StatLabel,
   StatNumber,
   useColorModeValue,
-  Center,
 } from "@chakra-ui/react";
 
-function StatsCard(props) {
-  const { title, stat } = props;
+function StatsCard({ stat }) {
   return (
     <Stat
       _hover={{ boxShadow: "16px grey" }}
