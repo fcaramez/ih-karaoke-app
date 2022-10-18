@@ -40,7 +40,7 @@ export const Dashboard = () => {
         requests.map((el, i) => {
           if (i === 0) {
             return (
-              <>
+              <div key={el.id}>
                 <br />
                 <Box
                   px={{ base: 2, md: 4 }}
@@ -65,12 +65,10 @@ export const Dashboard = () => {
                     {el.performers + " playing " + el.songName}
                   </Heading>
                   <br />
-                  <p>
-                    Requested by: {el.requestedBy}
-                  </p>
+                  <p>Requested by: {el.requestedBy}</p>
                 </Box>
                 <br />
-              </>
+              </div>
             );
           } else {
             return (

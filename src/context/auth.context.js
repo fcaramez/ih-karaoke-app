@@ -1,6 +1,6 @@
 import { signOut, onAuthStateChanged } from "firebase/auth";
 import React, { useContext, useState, useEffect } from "react";
-import { auth } from "../firebaseFuntions/auth.firebase";
+import { auth, getUserById } from "../firebaseFuntions/auth.firebase";
 import { useNavigate } from "react-router-dom";
 
 const AuthContext = React.createContext();
@@ -26,7 +26,7 @@ export function AuthProvider({ children }) {
   };
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, async (user) => {
       if (user) {
         if (user.email === "diogo.capitão@ironhack.com") {
           setAdmin(user);
@@ -36,7 +36,7 @@ export function AuthProvider({ children }) {
         setCurrentUser(user);
         setIsLoading(false);
         navigate("/profile");
-        console.log("User: ", user);
+        console.log("User: ", user.reloadUserInfo);
       } else {
         setUser(null);
         setIsLoggedIn(false);

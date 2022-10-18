@@ -32,7 +32,7 @@ const signInWithGoogle = async () => {
     if (docs.docs.length === 0) {
       await addDoc(collection(db, "users"), {
         uid: user.uid,
-        name: user.displayName,
+        displayName: user.displayName,
         authProvider: "google",
         email: user.email,
       });
@@ -51,13 +51,13 @@ const logInWithEmailAndPassword = async (email, password) => {
   }
 };
 
-const registerWithEmailAndPassword = async (name, email, password) => {
+const registerWithEmailAndPassword = async (displayName, email, password) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
     await addDoc(collection(db, "users"), {
       uid: user.uid,
-      name,
+      displayName,
       authProvider: "local",
       email,
       userType: "a",
@@ -67,6 +67,32 @@ const registerWithEmailAndPassword = async (name, email, password) => {
     alert(error.message);
   }
 };
+
+const getUserById = async (id) => {
+  try {
+    const usersRef = collection(db, "users");
+    const q = query(usersRef, where("uid", "==", id));
+    const user = await getDocs(q);
+    return user.docs[0].data();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const checkAdmin = (uid) => {
+  return uid === process.env.REACT_APP_ADMIN_ID;
+};
+
+/* const isAdmin = async (uid) => {
+  try {
+    const usersRef = collection(db, "users");
+    const q = query(usersRef, where("uid", "==", uid));
+    const user = await getDocs(q);
+    return user.docs[0].data();
+  } catch (error) {
+    console.log(error);
+  }
+}; */
 
 const sendPasswordReset = async (email) => {
   try {
@@ -85,4 +111,6 @@ export {
   logInWithEmailAndPassword,
   registerWithEmailAndPassword,
   sendPasswordReset,
+  getUserById,
+  checkAdmin,
 };

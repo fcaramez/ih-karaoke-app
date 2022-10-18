@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import ihLogo from "../assets/ironhack-logo.png";
 import { Image } from "@chakra-ui/react";
-
+import { getUserById } from "../firebaseFuntions/auth.firebase";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addRequest } from "../firebaseFuntions/db.firebase";
@@ -26,10 +26,16 @@ export default function RequestForm() {
   const navigate = useNavigate();
   const { currentUser } = useAuth(AuthProvider);
 
+  /* const getName = async () => {
+    const name = await getUserById(currentUser.uid);
+    console.log(name.name);
+  }; */
+
   const handleRequest = async (e) => {
     try {
+      const name = await getUserById(currentUser.uid);
       e.preventDefault();
-      await addRequest(songName, performers, currentUser.displayName);
+      await addRequest(songName, performers, name.displayName);
       navigate("/queue");
     } catch (error) {
       console.log(error);

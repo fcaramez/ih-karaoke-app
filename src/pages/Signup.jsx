@@ -23,7 +23,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
-  const [name, setName] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -61,7 +61,10 @@ export default function Signup() {
           <Stack spacing={4}>
             <FormControl id="username">
               <FormLabel>Username</FormLabel>
-              <Input type="text" onChange={(e) => setName(e.target.value)} />
+              <Input
+                type="text"
+                onChange={(e) => setDisplayName(e.target.value)}
+              />
             </FormControl>
             <FormControl id="email">
               <FormLabel>Email address</FormLabel>
@@ -92,7 +95,7 @@ export default function Signup() {
                   bg: "blue.500",
                 }}
                 onClick={() => {
-                  registerWithEmailAndPassword(name, email, password);
+                  registerWithEmailAndPassword(displayName, email, password);
                 }}>
                 Sign up
               </Button>
