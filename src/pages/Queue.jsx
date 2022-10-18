@@ -13,9 +13,8 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { FiMic } from "react-icons/fi";
-import { deleteRequest } from "../firebaseFuntions/db.firebase";
 function StatsCard(props) {
-  const { title, stat, icon } = props;
+  const { title, stat, icon, requestedBy } = props;
   return (
     <Stat
       px={{ base: 2, md: 4 }}
@@ -26,12 +25,11 @@ function StatsCard(props) {
       rounded={"lg"}>
       <Flex justifyContent={"space-between"}>
         <Box pl={{ base: 2, md: 4 }}>
-          <StatLabel fontWeight={"medium"} isTruncated>
-            {title}
-          </StatLabel>
+          <StatLabel fontWeight={"medium"}>{title}</StatLabel>
           <StatNumber fontSize={"2xl"} fontWeight={"medium"}>
             {stat}
           </StatNumber>
+          
         </Box>
         <Box
           my={"auto"}
@@ -48,15 +46,6 @@ export const Queue = () => {
   const requestsRef = collection(db, "requests");
 
   const [requests] = useCollectionData(requestsRef, orderBy("createdAt"));
-  console.log(requests);
-  /*  const data = requests.map((doc) => {
-    return ({
-      ...doc.data(), id: doc.id
-    })
-  }) */
-  const handleDelete = async (songName) => {
-    await deleteRequest(songName);
-  };
 
   return (
     <div>
@@ -70,33 +59,18 @@ export const Queue = () => {
         </chakra.h1>
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
           {requests &&
-            requests
-              .map((el) => {
-                return (
-                  <div key={el.songName}>
-                    <StatsCard
-                      title={el.performers + " playing"}
-                      stat={el.songName}
-                      icon={<FiMic size={"3em"} />}
-                    />
-                    <button onClick={() => handleDelete(el.performers)}>
-                      Delete Request
-                    </button>
-                  </div>
-                );
-              })
-              .reverse()}
-
-          {/*   <StatsCard
-            title={"Servers"}
-            stat={"1,000"}
-            icon={<FiServer size={"3em"} />}
-          />
-          <StatsCard
-            title={"Datacenters"}
-            stat={"7"}
-            icon={<GoLocation size={"3em"} />}
-          /> */}
+            requests.map((el) => {
+              return (
+                <div key={el.songName}>
+                  <StatsCard
+                    title={el.performers + " playing"}
+                    stat={el.songName}
+                    icon={<FiMic size={"3em"} />}
+                    requestedBy={el.requestedBy}
+                  />
+                </div>
+              );
+            })}
         </SimpleGrid>
       </Box>
     </div>

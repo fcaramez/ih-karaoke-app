@@ -12,13 +12,9 @@ import {
   Center,
   Text,
 } from "@chakra-ui/react";
-import { FcGoogle } from "react-icons/fc";
 import ihLogo from "../assets/ironhack-logo.png";
 import { Image } from "@chakra-ui/react";
-import {
-  logInWithEmailAndPassword,
-  signInWithGoogle,
-} from "../firebaseFuntions/auth.firebase";
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { addRequest } from "../firebaseFuntions/db.firebase";
@@ -33,7 +29,7 @@ export default function RequestForm() {
   const handleRequest = async (e) => {
     try {
       e.preventDefault();
-      await addRequest(songName, performers, currentUser.uid);
+      await addRequest(songName, performers, currentUser.displayName);
       navigate("/queue");
     } catch (error) {
       console.log(error);
@@ -78,7 +74,7 @@ export default function RequestForm() {
               />
             </FormControl>
             <FormControl id="performers">
-              <FormLabel>Performers</FormLabel>
+              <FormLabel>Performers </FormLabel>
               <Input
                 type="text"
                 onChange={(e) => setPerformers(e.target.value)}
