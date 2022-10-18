@@ -37,7 +37,7 @@ export default function Navbar() {
           <HStack spacing={8} alignItems={"center"}>
             <Center>
               <Image
-                onClick={() => navigate("/")}
+                onClick={() => navigate("/queue")}
                 src={ihLogo}
                 style={{
                   maxWidth: "15%",
@@ -66,7 +66,9 @@ export default function Navbar() {
                 variant={"link"}
                 cursor={"pointer"}
                 minW={0}>
-                <Avatar size={"sm"} src={currentUser?.photoURL} />
+                {currentUser && (
+                  <Avatar size={"sm"} src={currentUser.photoURL} />
+                )}
               </MenuButton>
             </Menu>
           </Flex>

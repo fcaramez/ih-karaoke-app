@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Box,
   chakra,
@@ -7,18 +6,24 @@ import {
   StatNumber,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
-function StatsCard({ stat }) {
+function StatsCard(props) {
+  const { stat, url } = props;
+  const navigate = useNavigate();
   return (
     <Stat
-      _hover={{ boxShadow: "16px grey" }}
+      onClick={() => navigate(`/${url}`)}
       px={{ base: 4, md: 8 }}
       py={"5"}
       shadow={"xl"}
       border={"1px solid"}
       borderColor={useColorModeValue("blue.800", "blue.500")}
       rounded={"lg"}
-      cursor={"pointer"}>
+      cursor={"pointer"}
+      _hover={{
+        bg: "blue.500",
+      }}>
       <StatNumber textAlign={"center"} fontSize={"2xl"} fontWeight={"medium"}>
         {stat}
       </StatNumber>
@@ -31,16 +36,20 @@ export default function Profile() {
     <Box maxW="7xl" mx={"auto"} pt={5} px={{ base: 2, sm: 12, md: 17 }}>
       <chakra.h1
         textAlign={"center"}
-        fontSize={"4xl"}
+        fontSize={"3xl"}
         py={10}
         fontWeight={"bold"}>
         Explore our cool features!
       </chakra.h1>
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 4, lg: 8 }}>
-        <StatsCard stat={"Rock the Karaoke 🎤"} />
-        <StatsCard stat={"Check the Queue 🕚"} />
-        <StatsCard stat={"Share your experience ✨"} />
-        <StatsCard stat={"Check on other Ironhackers 🚀"} />
+        <StatsCard
+          url={"add-request"}
+          onClick={() => console.log("Rock Karaoke")}
+          stat={"Rock the Karaoke 🎤"}
+        />
+        <StatsCard url={"queue"} stat={"Check the Queue 🕚"} />
+        <StatsCard stat={"Share your experience ✨ (coming soon)"} />
+        <StatsCard stat={"Check on other Ironhackers 🚀 (coming soon)"} />
       </SimpleGrid>
     </Box>
   );

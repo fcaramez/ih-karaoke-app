@@ -13,6 +13,7 @@ export function AuthProvider({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [admin, setAdmin] = useState(null);
   const [currentUser, setCurrentUser] = useState(null);
 
   const navigate = useNavigate();
@@ -27,11 +28,15 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
+        if (user.email === "diogo.capitão@ironhack.com") {
+          setAdmin(user);
+        }
         setUser(user);
         setIsLoggedIn(true);
         setCurrentUser(user);
         setIsLoading(false);
         navigate("/profile");
+        console.log("User: ", user);
       } else {
         setUser(null);
         setIsLoggedIn(false);
@@ -49,6 +54,7 @@ export function AuthProvider({ children }) {
         user,
         currentUser,
         logOutUser,
+        admin,
       }}>
       {children}
     </AuthContext.Provider>
