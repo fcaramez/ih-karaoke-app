@@ -9,12 +9,13 @@ import Navbar from "./components/Navbar";
 import Profile from "./pages/Profile";
 import { Queue } from "./pages/Queue";
 import RequestForm from "./components/RequestForm";
-import {Dashboard} from "./pages/Dashboard";
+import { Dashboard } from "./pages/Dashboard";
+import { useAuth, AuthProvider } from "./context/auth.context";
 
 function App() {
+  const { currentUser } = useAuth(AuthProvider);
   return (
     <div className="App">
-      <Navbar />
       <Routes>
         <Route
           path="/"
@@ -44,23 +45,32 @@ function App() {
           path="/profile"
           element={
             <IsPrivate>
+              <Navbar />
               <Profile />
             </IsPrivate>
           }
         />
         <Route path="/reset-password" element={<ForgotPassword />} />
-        <Route path="/queue" element={<Queue />} />
+        <Route
+          path="/queue"
+          element={
+            <>
+              <Navbar />
+              <Queue />
+            </>
+          }
+        />
         <Route
           path="/add-request"
           element={
             <IsPrivate>
+              <Navbar />
+
               <RequestForm />
             </IsPrivate>
           }
         />
-          <Route path={"/super-secret-dashboard"} element={
-                <Dashboard/>
-          }  />
+        <Route path={"/super-secret-dashboard"} element={<Dashboard />} />
       </Routes>
     </div>
   );

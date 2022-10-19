@@ -25,65 +25,92 @@ export default function Navbar() {
 
   return (
     <>
-      <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
-        <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
-          <IconButton
-            size={"md"}
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-            aria-label={"Open Menu"}
-            display={{ md: "none" }}
-            onClick={isOpen ? onClose : onOpen}
-          />
-          <HStack spacing={8} alignItems={"center"}>
-            <Center>
-              <Image
-                onClick={() => navigate("/queue")}
-                src={ihLogo}
-                style={{
-                  maxWidth: "15%",
-                  maxHeight: "15%",
-                  display: "flex",
-                  alignContent: "center",
-                  justifyContent: "center",
-                }}
-                alt="ironhack logo"></Image>
-            </Center>
-            <HStack
-              as={"nav"}
-              spacing={4}
-              display={{ base: "none", md: "flex" }}>
-              <Button onClick={() => navigate("/queue")}>Queue</Button>
-              <Button onClick={() => navigate("/feed")}>Feed</Button>
-              <Button onClick={() => logOutUser()}>Logout</Button>
+      {currentUser === null ? (
+        <Box px={4}>
+          <br />
+          <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
+            <HStack spacing={8} alignItems={"center"}>
+              <Center>
+                <Image
+                  onClick={() => navigate("/queue")}
+                  src={ihLogo}
+                  style={{
+                    maxWidth: "15%",
+                    maxHeight: "15%",
+                    display: "flex",
+                    alignContent: "center",
+                    justifyContent: "center",
+                  }}
+                  alt="ironhack logo"></Image>
+              </Center>
             </HStack>
-          </HStack>
-          <Flex alignItems={"center"}>
-            <Menu>
-              <MenuButton
-                onClick={() => navigate("/profile")}
-                as={Button}
-                rounded={"full"}
-                variant={"link"}
-                cursor={"pointer"}
-                minW={0}>
-                {currentUser && (
-                  <Avatar size={"sm"} src={currentUser.photoURL} />
-                )}
-              </MenuButton>
-            </Menu>
           </Flex>
-        </Flex>
+        </Box>
+      ) : (
+        <Box px={4}>
+          <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
+            <IconButton
+              size={"md"}
+              icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+              aria-label={"Open Menu"}
+              display={{ md: "none" }}
+              onClick={isOpen ? onClose : onOpen}
+            />
+            <HStack spacing={8} alignItems={"center"}>
+              <Center>
+                <Image
+                  onClick={() => navigate("/queue")}
+                  src={ihLogo}
+                  style={{
+                    maxWidth: "15%",
+                    maxHeight: "15%",
+                    display: "flex",
+                    alignContent: "center",
+                    justifyContent: "center",
+                  }}
+                  alt="ironhack logo"></Image>
+              </Center>
+              <HStack
+                as={"nav"}
+                spacing={4}
+                display={{ base: "none", md: "flex" }}>
+                <Button onClick={() => navigate("/queue")}>Queue</Button>
+                <Button onClick={() => navigate("/add-request")}>
+                  Submit a song!
+                </Button>
+                <Button onClick={() => logOutUser()}>Logout</Button>
+              </HStack>
+            </HStack>
+            <Flex alignItems={"center"}>
+              <Menu>
+                <MenuButton
+                  onClick={() => navigate("/profile")}
+                  as={Button}
+                  rounded={"full"}
+                  variant={"link"}
+                  cursor={"pointer"}
+                  minW={0}>
+                  {currentUser && (
+                    <Avatar size={"sm"} src={currentUser.photoURL} />
+                  )}
+                </MenuButton>
+              </Menu>
+            </Flex>
+          </Flex>
 
-        {isOpen ? (
-          <Box pb={4} display={{ md: "none" }}>
-            <Stack as={"nav"} spacing={4}>
-              <Button onClick={() => navigate("/queue")}>Queue</Button>
-              <Button onClick={() => navigate("/feed")}>Feed</Button>
-              <Button onClick={() => logOutUser()}>Logout</Button>
-            </Stack>
-          </Box>
-        ) : null}
-      </Box>
+          {isOpen ? (
+            <Box pb={4} display={{ md: "none" }}>
+              <Stack as={"nav"} spacing={4}>
+                <Button onClick={() => navigate("/queue")}>Queue</Button>
+                <Button onClick={() => navigate("/add-request")}>
+                  Submit a song!
+                </Button>
+                <Button onClick={() => logOutUser()}>Logout</Button>
+              </Stack>
+            </Box>
+          ) : null}
+        </Box>
+      )}
     </>
   );
 }
