@@ -8,7 +8,6 @@ import {
   Menu,
   MenuButton,
   useDisclosure,
-  useColorModeValue,
   Stack,
   Image,
   Center,

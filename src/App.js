@@ -10,11 +10,9 @@ import Profile from "./pages/Profile";
 import { Queue } from "./pages/Queue";
 import RequestForm from "./components/RequestForm";
 import { Dashboard } from "./pages/Dashboard";
-import { useAuth, AuthProvider } from "./context/auth.context";
 import { ComingSoon } from "./pages/ComingSoon";
 
 function App() {
-  const { currentUser } = useAuth(AuthProvider);
   return (
     <div className="App">
       <Routes>

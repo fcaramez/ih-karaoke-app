@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { FiMic } from "react-icons/fi";
 function StatsCard(props) {
-  const { title, stat, icon, requestedBy } = props;
+  const { title, stat, icon } = props;
   return (
     <Stat
       px={{ base: 2, md: 4 }}

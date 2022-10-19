@@ -5,12 +5,10 @@ import {
   FormLabel,
   Input,
   Stack,
-  Link,
   Button,
   Heading,
   useColorModeValue,
   Center,
-  Text,
 } from "@chakra-ui/react";
 import ihLogo from "../assets/ironhack-logo.png";
 import { Image } from "@chakra-ui/react";
@@ -25,11 +23,6 @@ export default function RequestForm() {
   const [performers, setPerformers] = useState("");
   const navigate = useNavigate();
   const { currentUser } = useAuth(AuthProvider);
-
-  /* const getName = async () => {
-    const name = await getUserById(currentUser.uid);
-    console.log(name.name);
-  }; */
 
   const handleRequest = async (e) => {
     try {
