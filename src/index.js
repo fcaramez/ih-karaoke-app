@@ -8,6 +8,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { AuthProvider } from "./context/auth.context";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastProvider } from "./context/toast.context";
+import * as serviceWorker from "./serviceWorkerRegistration";
 
 const config = {
   initialColorMode: "dark",
@@ -31,3 +32,5 @@ root.render(
     </Router>
   </React.StrictMode>
 );
+
+serviceWorker.register();
