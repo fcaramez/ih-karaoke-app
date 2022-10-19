@@ -36,7 +36,7 @@ export const Dashboard = () => {
 
   return (
     <div>
-      {requests &&
+      {requests ?
         requests.map((el, i) => {
           if (i === 0) {
             return (
@@ -103,7 +103,9 @@ export const Dashboard = () => {
               </div>
             );
           }
-        })}
+        }): <div>
+          <h1>No Requests yet poderoso chefão :P</h1>
+        </div> }
     </div>
   );
 };
