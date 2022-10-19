@@ -44,12 +44,17 @@ export default function Profile() {
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 4, lg: 8 }}>
         <StatsCard
           url={"add-request"}
-          onClick={() => console.log("Rock Karaoke")}
           stat={"Rock the Karaoke 🎤"}
         />
         <StatsCard url={"queue"} stat={"Check the Queue 🕚"} />
-        <StatsCard stat={"Share your experience ✨ (coming soon)"} />
-        <StatsCard stat={"Check on other Ironhackers 🚀 (coming soon)"} />
+        <StatsCard
+          url={"coming-soon"}
+          stat={"Share your experience ✨ (coming soon)"}
+        />
+        <StatsCard
+          url={"coming-soon"}
+          stat={"Check on other Ironhackers 🚀 (coming soon)"}
+        />
       </SimpleGrid>
     </Box>
   );

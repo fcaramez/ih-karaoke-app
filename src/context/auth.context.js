@@ -36,7 +36,6 @@ export function AuthProvider({ children }) {
         setCurrentUser(user);
         setIsLoading(false);
         navigate("/profile");
-        console.log("User: ", user.reloadUserInfo);
       } else {
         setUser(null);
         setIsLoggedIn(false);

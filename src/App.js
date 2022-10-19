@@ -11,6 +11,7 @@ import { Queue } from "./pages/Queue";
 import RequestForm from "./components/RequestForm";
 import { Dashboard } from "./pages/Dashboard";
 import { useAuth, AuthProvider } from "./context/auth.context";
+import { ComingSoon } from "./pages/ComingSoon";
 
 function App() {
   const { currentUser } = useAuth(AuthProvider);
@@ -71,6 +72,7 @@ function App() {
           }
         />
         <Route path={"/super-secret-dashboard"} element={<Dashboard />} />
+        <Route path={"/coming-soon"} element={<ComingSoon />} />
       </Routes>
     </div>
   );
